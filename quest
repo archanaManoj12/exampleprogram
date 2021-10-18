@@ -1,0 +1,285 @@
+#include <iostream>
+#include<math.h>
+using namespace std;
+void Reverse(int nArray[],int num,int &c)
+{
+	int rev = 0;
+	c = 0;
+	while (num != 0)
+	{
+		rev = num% 10;
+		nArray[c] = rev;
+		num = num / 10;
+		c++;
+
+
+	}
+	
+
+}
+void Calsumofdig(int num)
+{
+	int nSum = 0;
+	while (num!=0)
+	{
+		nSum = nSum + num% 10;
+		num = num / 10;
+
+	}
+	cout << nSum;
+}
+void IsAmstrong(int num)
+{
+	int  rem, temp,knum;
+	cout << "enter the  number of digits" << endl;
+	cin >> knum;
+	temp = num;
+	double sum1 = 0;
+	while (num != 0)
+	{
+		rem = num % 10;
+		sum1 += pow(rem,knum);
+		num = num / 10;
+		
+	}
+	if (sum1 == temp)
+	{
+		cout << temp<< "is an Amstrong number" << endl;
+	}
+	else
+	{
+		cout << temp << "is not an Amstrong number" << endl;
+	}
+}
+
+
+void Isperfectnum(int num)
+{
+	int i = 0, sum = 0;
+	for (i = 1;i < num;i++)
+	{
+		if (num % i == 0)
+		{
+			sum += i;
+		}
+	}
+	if (sum == num)
+	{
+		cout << num<<" is a perfect number" << endl;
+	}
+	else
+	{
+		cout << num << " is not a perfect number" << endl;
+	}
+}
+void Calgcd(int num1, int num2)
+{
+	int i, ngcd=0;
+	for (i = 1;i <= num1 && i <= num2;++i)
+	{
+		if (num1 % i == 0 && num2 % i == 0)
+		{
+			ngcd = i;
+		}
+	}
+	cout << "gcd of " << num1 << " and " << num2 << " is " << ngcd << endl;
+}
+void Callcm(int num1, int num2)
+{
+	int max = 0;
+	max = (num1 > num2) ? num1 : num2;
+	
+	while (1)
+	{
+		if (max % num1 == 0 && max % num2 == 0)
+		{
+			cout << "LCM of " << num1 << " and " << num2 << " is " << max<< endl;
+			
+			break;
+
+		}
+		++max;
+	}
+	//cout << "LCM of " << num1 << " and " << num2 << " is " << lcm << endl;
+
+
+}
+void MatrixAddition(int nColoumn1, int nRow1, int nColoumn2, int nRow2)
+{
+	int  i, j,nArray1[10][10],nArray2[10][10], nSumarr[10][10];
+	if (nColoumn1 == nColoumn2 && nRow1 == nRow2)
+	{
+		for (i = 0;i < nRow1;i++)
+		{
+			for (j = 0;j < nColoumn1;j++)
+			{
+				nSumarr[i][j] = nArray1[i][j] + nArray2[i][j];
+			}
+		}
+		for (i = 0;i < nRow1;i++)
+		{
+			for (j = 0;j < nColoumn1;j++)
+			{
+				cout << nSumarr[i][j];
+				cout << "\t";
+			}
+			cout << "\n";
+		}
+	}
+	else
+	{
+		cout << "Addition not possible" << endl;
+	}
+
+}
+
+
+
+
+int main()
+{
+	int num, i, choice, nArray[10], count = 0,num2;
+	int nColumn1, nColumn2, nRow1, nRow2, narr1[10][10], narr2[10][10], j, nSumarr[10][10];
+	cout << "1.Reverse a nuumber\t2.Sum of digits\t3.amstrong number\t4.Perfect number \t5.Gcd\t6.LCM\t7.Sum of two matrices" << endl;
+	cout << "Enter Your Choice" << endl;
+	cin >> choice;
+	
+	switch (choice)
+
+	{
+	case 1:
+	{
+		cout << "Enter a number" << endl;
+		cin >> num;
+		Reverse(nArray, num, count);
+		cout << "Reverse of " << num << " =  ";
+		for (i = 0;i < count;i++)
+		{
+			cout << nArray[i];
+		}
+		break;
+	}
+	case 2:
+	{
+		cout << "Enter a number" << endl;
+		cin >> num;
+		cout << "sum of digits of" << num << "is ";
+		Calsumofdig(num);
+		break;
+
+	}
+	case 3:
+	{
+		cout << "Enter a number" << endl;
+		cin >> num;
+		IsAmstrong(num);
+		break;
+	}
+	case 4:
+	{
+		Isperfectnum(num);
+		break;
+	}
+	case 5:
+	{
+		cout << "Enter a number1" << endl;
+		cin >> num;
+		cout << "enter number 2" << endl;
+		cin >> num2;
+		Calgcd(num, num2);
+		break;
+	}
+	case 6:
+	{
+		cout << "Enter a number1" << endl;
+		cin >> num;
+		cout << "Enter number 2" << endl;
+		cin >> num2;
+		Callcm(num, num2);
+		break;
+	}
+	case 7:
+	{
+		
+
+		cout << "Enter the row and column of first matrix" << endl;
+		cin >> nRow1>>nColumn1;
+		cout << "Enter the row and column of second matrix" << endl;
+		cin >> nRow2>>nColumn2;
+		cout << "Enter the first marix" << endl;
+		for (i = 0;i < nRow1;i++)
+		{
+			for (j = 0;j < nColumn1;j++)
+			{
+				cin >> narr1[i][j];
+
+			}
+		}
+		for (i = 0;i < nRow1;i++)
+		{
+			for (j = 0;j < nColumn1;j++)
+			{
+				cout << narr1[i][j];
+				cout << "\t";
+
+			}
+			cout << "\n";
+		}
+		cout << "Enter the second matrix";
+		for (i = 0;i < nRow1;i++)
+		{
+			for (j = 0;j < nColumn1;j++)
+			{
+				cin >> narr2[i][j];
+
+			}
+		}
+		for (i = 0;i < nRow1;i++)
+		{
+			for (j = 0;j < nColumn1;j++)
+			{
+				cout << narr2[i][j];
+				cout << "\t";
+
+			}
+			cout << "\n";
+		}
+			if (nColumn1 == nColumn2 && nRow1 == nRow2)
+			{
+				for (i = 0;i < nRow1;i++)
+				{
+					for (j = 0;j < nColumn1;j++)
+					{
+						nSumarr[i][j] = narr1[i][j] + narr2[i][j];
+					}
+				}
+				cout << "Sum of Matrix is " << endl;
+				for (i = 0;i < nRow1;i++)
+				{
+					for (j = 0;j < nColumn1;j++)
+					{
+						cout << nSumarr[i][j];
+						cout << "\t";
+					}
+					cout << "\n";
+				}
+			}
+			else
+			{
+				cout << "Addition not possible" << endl;
+			}
+
+
+		
+		
+		break;
+	}
+
+	default:
+	{
+		cout << "Wrong Choice" << endl;
+		break;
+	}
+	}
+	return 0;
+}
